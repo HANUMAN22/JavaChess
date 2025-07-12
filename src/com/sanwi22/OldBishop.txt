@@ -1,0 +1,158 @@
+package com.sanwi22;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Bishop extends Piece {
+
+    public Bishop(Position position, Boolean isWhite) {
+        super(position, isWhite);
+    }
+
+    @Override
+    public List<Position> getLegalMoves(Board board) {
+
+        ArrayList<Position> legalPos = new ArrayList<>();
+        int row = getPosition().getRow();
+        int col = getPosition().getCol();
+        Position position = new Position(row, col);
+        String[] colLetters = {"a", "b", "c", "d", "e", "f", "g", "h"};
+
+        if(this.isWhite()) {
+            int j = col;
+            for (int i = row+1; i < 8; i++) {
+                if(j < 8) {
+                    j++;
+                }
+                position.setRow(i);
+                position.setCol(j);
+                try {
+                    if ((board.getPiece(position) == null) || (!board.getPiece(position).isWhite())){
+                        legalPos.add(position);
+                        System.out.println(colLetters[position.getCol()] +  (position.getRow() +1));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+            }
+
+            j = col;
+            for (int i = row-1; i >= 0; i--) {
+                if(j >= 0) {
+                    j--;
+                }
+                position.setRow(i);
+                position.setCol(j);
+                try {
+                    if ((board.getPiece(position) == null) || (!board.getPiece(position).isWhite())) {
+                        legalPos.add(position);
+                        System.out.println(colLetters[position.getCol()] + (position.getRow() +1));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+
+            }
+
+            j = col;
+            for (int i = row-1; i >= 0; i--) {
+                if(j < 8) {
+                    j++;
+                }
+                position.setRow(i);
+                position.setCol(j);
+                try {
+                    if ((board.getPiece(position) == null) || (!board.getPiece(position).isWhite())) {
+                        legalPos.add(position);
+                        System.out.println(colLetters[position.getCol()] + (position.getRow() +1));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+
+            }
+
+            j = col;
+            for (int i = row+1; i < 8; i++) {
+                if(j >= 0) {
+                    j--;
+                }
+                position.setRow(i);
+                position.setCol(j);
+                try {
+                    if ((board.getPiece(position) == null) || (!board.getPiece(position).isWhite())) {
+                        legalPos.add(position);
+                        System.out.println(colLetters[position.getCol()] + (position.getRow() +1));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+
+            }
+        } else {
+
+            int j = col;
+            for (int i = row+1; i < 8; i++) {
+                if(j < 8) {
+                    j++;
+                }
+                position.setRow(i);
+                position.setCol(j);
+                try {
+                    if ((board.getPiece(position) == null) || (board.getPiece(position).isWhite())){
+                        legalPos.add(position);
+                        System.out.println(colLetters[position.getCol()] + (position.getRow() +1));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+            }
+
+            j = col;
+            for (int i = row-1; i >= 0; i--) {
+                if(j >= 0) {
+                    j--;
+                }
+                position.setRow(i);
+                position.setCol(j);
+                try {
+                    if ((board.getPiece(position) == null) || (board.getPiece(position).isWhite())) {
+                        legalPos.add(position);
+                        System.out.println(colLetters[position.getCol()] + (position.getRow() +1));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+
+            }
+
+            j = col;
+            for (int i = row-1; i >= 0; i--) {
+                if(j < 8) {
+                    j++;
+                }
+                position.setRow(i);
+                position.setCol(j);
+                try {
+                    if ((board.getPiece(position) == null) || (board.getPiece(position).isWhite())) {
+                        legalPos.add(position);
+                        System.out.println(colLetters[position.getCol()] + (position.getRow() +1));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+
+            }
+
+            j = col;
+            for (int i = row+1; i < 8; i++) {
+                if(j >= 0) {
+                    j--;
+                }
+                position.setRow(i);
+                position.setCol(j);
+                try {
+                    if ((board.getPiece(position) == null) || (board.getPiece(position).isWhite())) {
+                        legalPos.add(position);
+                        System.out.println(colLetters[position.getCol()] + (position.getRow() +1));
+                    }
+                } catch (ArrayIndexOutOfBoundsException ignored) {}
+
+            }
+        }
+        return List.of();
+    }
+
+    public static void main(String[] args) {
+        Board board = new Board();
+        Bishop bishop = new Bishop(new Position(7, 0), true);
+        System.out.println(bishop.getLegalMoves(board).toString());
+    }
+}

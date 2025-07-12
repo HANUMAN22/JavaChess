@@ -1,0 +1,39 @@
+package com.sanwi22;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Knight extends Piece{
+
+    public Knight(Position position, Boolean isWhite) {
+        super(position, isWhite);
+    }
+
+    @Override
+    public List<Position> getLegalMoves(Board board) {
+
+        ArrayList<Position> legalPos = new ArrayList<>();
+        int row = getPosition().getRow();
+        int col = getPosition().getCol();
+
+        Position p1 = new Position(row+1, col+2);
+        Position p2 = new Position(row+1, col-2);
+        Position p3 = new Position(row-1, col+2);
+        Position p4 = new Position(row-1, col-2);
+        Position p5 = new Position(row+2, col+1);
+        Position p6 = new Position(row+2, col-1);
+        Position p7 = new Position(row-2, col+1);
+        Position p8 = new Position(row-2, col-1);
+
+        if (p1.isValidPosition() && ((board.getPiece(p1) == null) || !board.getPiece(p1).isWhite())) legalPos.add(p1);
+        if (p2.isValidPosition() && ((board.getPiece(p2) == null) || !board.getPiece(p2).isWhite())) legalPos.add(p2);
+        if (p3.isValidPosition() && ((board.getPiece(p3) == null) || !board.getPiece(p3).isWhite())) legalPos.add(p3);
+        if (p4.isValidPosition() && ((board.getPiece(p4) == null) || !board.getPiece(p4).isWhite())) legalPos.add(p4);
+        if (p5.isValidPosition() && ((board.getPiece(p5) == null) || !board.getPiece(p5).isWhite())) legalPos.add(p5);
+        if (p6.isValidPosition() && ((board.getPiece(p6) == null) || !board.getPiece(p6).isWhite())) legalPos.add(p6);
+        if (p7.isValidPosition() && ((board.getPiece(p7) == null) || !board.getPiece(p7).isWhite())) legalPos.add(p7);
+        if (p8.isValidPosition() && ((board.getPiece(p8) == null) || !board.getPiece(p8).isWhite())) legalPos.add(p8);
+
+        return List.of();
+    }
+}

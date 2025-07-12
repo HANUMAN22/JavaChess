@@ -1,0 +1,14 @@
+if (this instanceof King) {
+            return isWhite() ? "\u2654" : "\u265A";
+        } else if (this instanceof Queen) {
+            return isWhite() ? "\u2655" : "\u265B";
+        } else if (this instanceof Rook) {
+            return isWhite() ? "\u2656" : "\u265C";
+        } else if (this instanceof Bishop) {
+            return isWhite() ? "\u2657" : "\u265D";
+        } else if (this instanceof Knight) {
+            return isWhite() ? "\u2658" : "\u265E";
+        } else if (this instanceof Pawn) {
+            return isWhite() ? "\u2659" : "\u265F";
+        }
+        return "";
